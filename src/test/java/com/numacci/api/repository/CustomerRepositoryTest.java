@@ -56,11 +56,8 @@ public class CustomerRepositoryTest {
     assertEquals(35, actual.getAge());
     assertEquals("999-9999", actual.getPostCode());
     assertEquals("ORD00001", actual.getOrders().get(0).getOrderId());
-    assertEquals(LocalDate.of(2020, 1, 20),
-        actual.getOrders().get(0).getOrderDate());
     assertEquals("apple",
         actual.getOrders().get(0).getOrderedProducts().get(0).getProductName());
-    assertEquals(4, actual.getOrders().get(0).getOrderedProducts().get(0).getQuantity());
   }
 
   @DisplayName("Check that the only customers with the provided gender and postCode are retrieved.")
@@ -94,5 +91,16 @@ public class CustomerRepositoryTest {
     List<Customer> actuals = repository.findByTotalPriceGt(minPrice);
     assertEquals(1, actuals.size());
     assertEquals("USR00002", actuals.get(0).getCustomerId());
+  }
+
+  @DisplayName("Check that the customer is deleted by its identity.")
+  @Test
+  public void testDeleteByCustomerId() {
+    String customerId = "USR00004";
+
+    Customer actual = repository.deleteByCustomerId(customerId);
+    assertEquals(customerId, actual.getCustomerId());
+    assertEquals(12, actual.getAge());
+    assertEquals("999-9999", actual.getPostCode());
   }
 }

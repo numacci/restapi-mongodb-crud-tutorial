@@ -4,22 +4,14 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 
 public class Customer {
-
   @Id
   private String id;
-
   private String customerId;
-
   private String customerName;
-
   private int age;
-
   private String gender;
-
   private String postCode;
-
   private String address;
-
   private List<Order> orders;
 
   public String getId() {
@@ -84,18 +76,5 @@ public class Customer {
 
   public void setOrders(List<Order> orders) {
     this.orders = orders;
-  }
-
-  @Override
-  public String toString() {
-    return "Customer{" +
-        "id='" + id + '\'' +
-        ", customerId='" + customerId + '\'' +
-        ", customerName='" + customerName + '\'' +
-        ", age=" + age +
-        ", postCode='" + postCode + '\'' +
-        ", address='" + address + '\'' +
-        ", orders=" + orders +
-        '}';
   }
 }

@@ -1,6 +1,8 @@
+# Web
 server:
   servlet:
     context-path: /api
+# MongoDB
 spring:
   data:
     mongodb:

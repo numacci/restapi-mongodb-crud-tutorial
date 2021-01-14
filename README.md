@@ -17,7 +17,6 @@ $ docker-compose up -d
 # You can log into mongo-express at http://loca;host:8081
 ```
 
-
 2. Start Spring application by `bootRun`
 
 ```Shell
@@ -27,6 +26,8 @@ $ ./gradlew bootRun
 3. Test HTTP Request
 
 * URL root : http://localhost:8080/api
+
+* URL Examples:
 
 | Method | Endpoint |
 | --- | --- |

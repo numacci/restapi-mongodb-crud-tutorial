@@ -1,3 +1,4 @@
+// Define an application user.
 let user = {
   user: 'appuser',
   pwd: 'appuser',
@@ -6,5 +7,5 @@ let user = {
     db: 'appdb'
   }]
 };
-
+// Execute mongodb command to create the above user.
 db.createUser(user);

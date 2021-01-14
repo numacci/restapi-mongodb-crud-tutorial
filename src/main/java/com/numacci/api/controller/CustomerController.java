@@ -8,8 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,8 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
-
-  private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
 
   private CustomerService customerService;
 
@@ -80,7 +76,7 @@ public class CustomerController {
   }
 
   @DeleteMapping("/{id}")
-  public String deleteCustomer(@PathVariable String id) {
+  public Customer deleteCustomer(@PathVariable String id) {
     return customerService.deleteCustomer(id);
   }
 }

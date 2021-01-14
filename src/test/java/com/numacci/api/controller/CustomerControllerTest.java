@@ -6,7 +6,7 @@ import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.numacci.api.service.impl.CustomerServiceImpl;
+import com.numacci.api.service.CustomerService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import org.mockito.MockitoAnnotations;
 public class CustomerControllerTest {
 
   @Mock
-  private CustomerServiceImpl customerService;
+  private CustomerService customerService;
 
   @InjectMocks
   private CustomerController controller;
@@ -36,16 +36,18 @@ public class CustomerControllerTest {
   public void testGetCustomerByConditions() {
     // Test the case of String gender and postCode.
     testGetCustomerByGenderAndPostCode();
-    // Initialize request parameters and mock.
-    init();
+    clearInvocations(customerService);
 
     // Test the case of LocalDate from and to.
     testGetCustomerRecentlyOrdered();
-    // Initialize request parameters and mock.
-    init();
+    clearInvocations(customerService);
 
     // Test the case of Integer minPrice.
     testGetCustomerOrderedHighPrice();
+    clearInvocations(customerService);
+
+    // Test the case of invalid request parameters.
+    testInvalidRequestParameters();
   }
 
   private void testGetCustomerByGenderAndPostCode() {
@@ -92,7 +94,15 @@ public class CustomerControllerTest {
     verify(customerService, times(1)).getCustomerOrderedHighPrice(minPrice);
   }
 
-  private void init() {
-    clearInvocations(customerService);
+  private void testInvalidRequestParameters() {
+    Map<String, String> requestParams = new HashMap<>();
+    requestParams.put("invalidParam", "invalidParam");
+
+    controller.getCustomerByConditions(requestParams);
+    verify(customerService, times(0))
+        .getCustomerByGenderAndPostCode(any(String.class), any(String.class));
+    verify(customerService, times(0))
+        .getCustomerRecentlyOrdered(any(LocalDate.class), any(LocalDate.class));
+    verify(customerService, times(0)).getCustomerOrderedHighPrice(anyInt());
   }
 }

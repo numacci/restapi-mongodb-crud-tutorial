@@ -5,16 +5,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Order {
-
   private String orderId;
-
   private int totalPrice;
-
-  private List<OrderedProduct> orderedProducts;
-
+  private List<Product> orderedProducts;
   @JsonFormat(pattern = "yyyy-MM-dd")
   private LocalDate orderDate;
-
   private String status;
 
   public String getOrderId() {
@@ -33,12 +28,12 @@ public class Order {
     this.totalPrice = totalPrice;
   }
 
-  public List<OrderedProduct> getOrderedProducts() {
+  public List<Product> getOrderedProducts() {
     return orderedProducts;
   }
 
-  public void setOrderedProducts(List<OrderedProduct> orderedProducts) {
-    this.orderedProducts = orderedProducts;
+  public void setOrderedProducts(List<Product> products) {
+    this.orderedProducts = products;
   }
 
   public LocalDate getOrderDate() {
@@ -55,16 +50,5 @@ public class Order {
 
   public void setStatus(String status) {
     this.status = status;
-  }
-
-  @Override
-  public String toString() {
-    return "Order{" +
-        "orderId='" + orderId + '\'' +
-        ", totalPrice=" + totalPrice +
-        ", orderedProducts=" + orderedProducts +
-        ", orderDate=" + orderDate +
-        ", status='" + status + '\'' +
-        '}';
   }
 }

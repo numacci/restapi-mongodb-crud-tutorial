@@ -63,9 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public String deleteCustomer(String customerId) {
-    String objectId = repository.findByCustomerId(customerId).getId();
-    repository.deleteById(objectId);
-    return customerId;
+  public Customer deleteCustomer(String customerId) {
+    return repository.deleteByCustomerId(customerId);
   }
 }

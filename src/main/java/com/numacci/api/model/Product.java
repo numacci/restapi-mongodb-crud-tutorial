@@ -1,11 +1,8 @@
 package com.numacci.api.model;
 
-public class OrderedProduct {
-
+public class Product {
   private String productName;
-
   private int quantity;
-
   private int price;
 
   public String getProductName() {
@@ -30,14 +27,5 @@ public class OrderedProduct {
 
   public void setPrice(int price) {
     this.price = price;
-  }
-
-  @Override
-  public String toString() {
-    return "OrderedProduct{" +
-        "productName='" + productName + '\'' +
-        ", quantity=" + quantity +
-        ", price=" + price +
-        '}';
   }
 }

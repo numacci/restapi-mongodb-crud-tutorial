@@ -29,7 +29,7 @@ public interface CustomerRepository extends MongoRepository<Customer, String> {
   List<Customer> findByGenderAndPostCode(String gender, String postCode);
 
   /**
-   * Retrieve customers who have ordered between the provided date.
+   * Retrieve customers who have ordered between two provided dates.
    * Conditions can also be applied to fields inside nested objects by simply connecting field names.
    * We can also use "Between" keyword for method name.
    *
@@ -47,4 +47,12 @@ public interface CustomerRepository extends MongoRepository<Customer, String> {
    */
   @Query("{ 'orders.totalPrice' : { $gt : ?0 } }")
   List<Customer> findByTotalPriceGt(int minPrice);
+
+  /**
+   * Delete a customer document with the same customerId as provided.
+   *
+   * @param customerId identity of customer
+   * @return deleted object
+   */
+  Customer deleteByCustomerId(String customerId);
 }
