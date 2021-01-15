@@ -1,6 +1,6 @@
 # restapi-mongodb-crud-tutorial
 
-This is a tutorial project using Spring Boot and MongoDB to build a RESTful web service. 
+This is a tutorial project using Spring Boot and MongoDB to build a RESTful web service. Please refer to [zenn.dev](https://zenn.dev/numacci/articles/restapi-mongodb-crud-tutorial) where the details of this repository explained.
 
 ### Prerequisites
 
